@@ -5,7 +5,12 @@
 #include "CoreMinimal.h"
 #include "TankAimingComponent.h"
 #include "GameFramework/Pawn.h"
+#include "Engine/World.h"
+#include "TankBarrel.h"
 #include "Tank.generated.h"
+
+class AProjectile;
+
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -35,15 +40,15 @@ protected:
 
 private:	
 	
-
-
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000; // TODO find sensible default
 
-	
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UTankBarrel* Barrel = nullptr;
 	
 };
