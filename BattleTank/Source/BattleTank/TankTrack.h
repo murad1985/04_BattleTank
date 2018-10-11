@@ -20,5 +20,5 @@ public:
 	
 	// Max force per track in Neutons
 	UPROPERTY(EditDefaultsOnly)
-	float TrackMaxDrivingForce = 400000; // Assume 40ton tank and 1g acceleration
+	float TrackMaxDrivingForce = 400000000; // Assume 40ton tank and 1g acceleration
 };
