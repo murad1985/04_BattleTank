@@ -19,9 +19,7 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-
-	auto TankName = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("DONKEY: BeginPlay %s"), *TankName);
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATank::AimAt(FVector HitLocation)
@@ -30,12 +28,9 @@ void ATank::AimAt(FVector HitLocation)
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
-
-
 void ATank::Fire()
 {
 	if (!ensure(Barrel)) { return; }
-
 	bool isReloaded = (GetWorld()->GetTimeSeconds() - LastFireTime) > ReloadTimeInSeconds;
 
 	if (isReloaded)
@@ -50,8 +45,6 @@ void ATank::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = GetWorld()->GetTimeSeconds();
-	}
-
-	
+	}	
 }
 
