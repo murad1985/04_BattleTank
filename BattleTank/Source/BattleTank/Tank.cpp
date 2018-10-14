@@ -2,7 +2,6 @@
 
 #include "Tank.h"
 #include "Projectile.h"
-#include "TankMovementComponent.h"
 #include "TankAimingComponent.h"
 
 
@@ -12,21 +11,10 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-	UE_LOG(LogTemp, Warning, TEXT("DONKEY: %s Construct"), *GetName());
+	// UE_LOG(LogTemp, Warning, TEXT("DONKEY: %s Construct"), *GetName());
 	// TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
-	// TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
+	
 }
-//
-//void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
-//{
-//	// TankAimingComponent->SetBarrelReference(BarrelToSet);
-//	Barrel = BarrelToSet;
-//}
-//
-//void ATank::SetTurretReference(UTankTurret * TurretToSet)
-//{
-//	Turret = TurretToSet;
-//}
 
 void ATank::BeginPlay()
 {
@@ -46,7 +34,6 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-	// UE_LOG(LogTemp, Warning, TEXT("You fired!"));
 	if (!ensure(Barrel)) { return; }
 
 	bool isReloaded = (GetWorld()->GetTimeSeconds() - LastFireTime) > ReloadTimeInSeconds;
