@@ -9,7 +9,6 @@
 #include "Tank.generated.h"
 
 class AProjectile;
-class UTankAimingComponent;
 
 
 UCLASS()
@@ -20,19 +19,12 @@ class BATTLETANK_API ATank : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ATank();
-	void AimAt(FVector HitLocation);
-
+	
 	UFUNCTION(BlueprintCallable)
 	void Fire();
-
-	
+		
 protected:
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
-
-	
 	virtual void BeginPlay() override;
-
 
 private:	
 	
