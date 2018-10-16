@@ -28,17 +28,11 @@ void UTankAimingComponent::BeginPlay()
 void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction)
 {
 	if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
-	{
-		FiringState = EFiringState::Reloading;
-	}
+	{	FiringState = EFiringState::Reloading; 	}
 	else if (IsBarrelMoving())
-	{
-		FiringState = EFiringState::Aiming;
-	}
+	{	FiringState = EFiringState::Aiming; }
 	else
-	{
-		FiringState = EFiringState::Locked;
-	}
+	{	FiringState = EFiringState::Locked; }
 }
 
 void UTankAimingComponent::Initialise(UTankBarrel * BarrelToSet, UTankTurret * TurretToSet)
@@ -102,7 +96,11 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
 	Barrel->Elevate(DeltaRotator.Pitch);
-	Turret->Rotate(DeltaRotator.Yaw);
+	if (DeltaRotator.Yaw < 180)
+	{	Turret->Rotate(DeltaRotator.Yaw); 	}
+	else
+	{	Turret->Rotate(-DeltaRotator.Yaw);	}
+	
 }
 
 bool UTankAimingComponent::IsBarrelMoving()
