@@ -53,6 +53,8 @@ private:
 
 	void MoveBarrelTowards(FVector AimDirection);
 
+	bool IsBarrelMoving();
+
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
@@ -61,6 +63,6 @@ private:
 
 	float LastFireTime = 0;
 
-	
+	FVector AimDirection;
 
 };
