@@ -76,8 +76,6 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-*/StarterContent
-
 /Content/BattleGround_HI.umap
 /Chris-Folea-MountainRange3.png
 
