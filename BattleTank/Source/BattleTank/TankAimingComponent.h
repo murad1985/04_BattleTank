@@ -41,14 +41,11 @@ public:
 	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable)
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = State)
 	EFiringState FiringState = EFiringState::Reloading;
-
-	UPROPERTY(BlueprintReadOnly, Category = Ammo)
-	int AmmoLeft = 3;
 
 private:
 	virtual void BeginPlay() override;
@@ -69,6 +66,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTimeInSeconds = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	int32 AmmoLeft = 3;
 
 	float LastFireTime = 0;
 
