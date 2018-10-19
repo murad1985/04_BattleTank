@@ -9,6 +9,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "PhysicsEngine/RadialForceComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/EngineTypes.h"
 #include "Public/TimerManager.h"
 #include "Projectile.generated.h"
@@ -51,6 +52,9 @@ private:
 	void OnTimerExpire();
 
 	UPROPERTY(EditDefaultsOnly)
-	float DestroyDelay = 10;
+	float DestroyDelay = 10.f;
+
+	UPROPERTY(EditDefaultsOnly)
+	float ProjectileDamage = 20.f;
 
 };
