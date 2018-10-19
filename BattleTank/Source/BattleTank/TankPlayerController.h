@@ -28,6 +28,8 @@ public:
 	
 	virtual void BeginPlay() override;
 
+	void SetPawn(APawn * InPawn);
+
 private:
 	void AimTowardsCrosshair();
 
@@ -45,6 +47,9 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+	UFUNCTION()
+	void OnPosessedTankDeath();
 
 	
 };

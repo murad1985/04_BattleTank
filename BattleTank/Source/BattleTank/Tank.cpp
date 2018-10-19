@@ -2,6 +2,11 @@
 
 #include "Tank.h"
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentHealth = StartingHealth;
+}
 
 float ATank::GetPercentHealth() const
 {
