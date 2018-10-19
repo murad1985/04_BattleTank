@@ -9,6 +9,8 @@
 #include "Components/StaticMeshComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "PhysicsEngine/RadialForceComponent.h"
+#include "Engine/EngineTypes.h"
+#include "Public/TimerManager.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -45,5 +47,10 @@ private:
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, FVector NormalImpulse, const FHitResult & Hit);
+
+	void OnTimerExpire();
+
+	UPROPERTY(EditDefaultsOnly)
+	float DestroyDelay = 10;
 
 };
