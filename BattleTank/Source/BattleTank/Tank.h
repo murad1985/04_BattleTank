@@ -6,12 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "Tank.generated.h"
 
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTankDelegate);
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
 {
 	GENERATED_BODY()
+
+	
 
 public:
 	// called by engine when damage is done
@@ -19,6 +21,8 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = Health)
 	float GetPercentHealth() const;
+
+	FTankDelegate OnDeath;
 
 private:
 	// Sets default values for this pawn's properties
