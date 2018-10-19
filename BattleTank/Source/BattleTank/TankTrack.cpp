@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankTrack.h"
+#include "Engine/World.h"
 
 UTankTrack::UTankTrack()
 {
@@ -11,7 +12,7 @@ UTankTrack::UTankTrack()
 void UTankTrack::BeginPlay()
 {
 	Super::BeginPlay();
-	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit); 
 }
 
 
