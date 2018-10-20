@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SceneComponent.h"
 #include "TankTrack.generated.h"
 
 /**
@@ -18,8 +19,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 		void SetThrottle(float Throttle);
 
-
-
 	// Max force per track in Neutons
 	UPROPERTY(EditDefaultsOnly)
 		float TrackMaxDrivingForce = 400000000;	// Assume 40ton tank and 1g acceleration
@@ -28,16 +27,8 @@ public:
 private:
 	UTankTrack();
 
-	virtual void BeginPlay() override;
+	TArray<class ASprungWheel*>GetWheels() const;
 
-	// virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction) override;
+	void DriveTrack(float CurrentThrottle);
 
-	void ApplySideForce();
-
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent * HitComponent, AActor * OtherActor, UPrimitiveComponent * OtherComponent, FVector NormalImpulse, const FHitResult & Hit);
-
-	void DriveTrack();
-
-	float CurrentThrottle = 0;
 };
